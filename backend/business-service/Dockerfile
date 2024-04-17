@@ -1,4 +1,4 @@
-FROM openjdk:11.0-jdk-slim
+FROM openjdk:17-alpine
 WORKDIR /business-service
 COPY target/*.jar /business-service/app.jar
 EXPOSE 8090

@@ -1,4 +1,4 @@
-FROM openjdk:11.0-jdk-slim
+FROM openjdk:17-alpine
 WORKDIR /transaction-service
 COPY target/*.jar /transaction-service/app.jar
 EXPOSE 8090
