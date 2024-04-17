@@ -27,6 +27,9 @@ jobs:
               with:
                 node-version: 18
 
+            - name: Retrieve the env vars
+              run: echo "${{ secrets.FE_ENV }}" > .env
+
             - name: Cache Node Modules
               uses: actions/cache@v3
               id: cache

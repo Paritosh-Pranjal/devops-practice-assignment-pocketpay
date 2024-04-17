@@ -70,3 +70,5 @@ export const PAYMENTS: PaymentInterface[] = [
     paymentMode: "BANK",
   },
 ];
+
+export const REDIRECTURI = "http://localhost:3000/signup-details";

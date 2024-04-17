@@ -17,7 +17,6 @@ root.render(
       clientId={process.env.REACT_APP_AUTH0_CLIENT_ID as string}
       authorizationParams={{
         redirect_uri: window.location.origin+"/signup-details",
-        prompt: "select_account",
       }}
     >
       <TransactionContextProvider>
