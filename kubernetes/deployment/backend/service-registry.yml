@@ -9,7 +9,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      type: service-registry-pod
+      type: service-registry
   template:
     metadata:
       name: service-registry-pod
@@ -18,11 +18,8 @@ spec:
     spec:
       containers:
       - name: pocketpay-backend-service-registry
-        image: ghcr.io/paritosh-pranjal/bc-pocketpay-backend-eks-service-registry:3
+        image: ghcr.io/paritosh-pranjal/bc-pocketpay-backend-eks-service-registry:4
         ports:
         - containerPort: 8761
-        env:
-            - name: EUREKA_INSTANCE_HOSTNAME
-              value: service-registry
       imagePullSecrets: 
       - name: ghcr-secret
