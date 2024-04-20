@@ -4,7 +4,7 @@ metadata:
   name: business-service-svc
 spec:
   ports:
-  - targetPort: 9191
-    port: 9191
+  - targetPort: 9002
+    port: 9002
   selector:
     type: business-service

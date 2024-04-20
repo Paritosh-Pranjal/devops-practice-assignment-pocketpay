@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-   name: backend-business-service-deployment
+   name: backend-user-service-deployment
    labels:
-      type: business-service-deployment
-      app: backend-bs-deployment
+      type: user-service-deployment
+      app: backend-us-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      type: business-service
+      type: user-service
   template:
     metadata:
-      name: business-service-pod
+      name: user-service-pod
       labels:
-        type: business-service
+        type: user-service
     spec:
       containers:
-      - name: pocketpay-backend-business-service
-        image: ghcr.io/paritosh-pranjal/bc-pocketpay-backend-eks-business-service:5
+      - name: pocketpay-backend-user-service
+        image: ghcr.io/paritosh-pranjal/bc-pocketpay-backend-eks-user-service:5
         ports:
-        - containerPort: 9002
+        - containerPort: 9001
         env:
           - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
             value: http://service-registry-svc:8761/eureka/
           - name: EUREKA_INSTANCE_HOSTNAME
-            value: business-service-svc
+            value: user-service-svc
           - name: SPRING_DATASOURCE_URL
             value: jdbc:mysql://a4972788981fa4f5cba0438457ecd337-1025724467.us-east-2.elb.amazonaws.com:3306/pocket_pay 
           - name: SPRING_DATASOURCE_USERNAME
