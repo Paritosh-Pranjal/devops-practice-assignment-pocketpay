@@ -1,4 +1,4 @@
-name: Frontend deployment
+name: Frontend CI/CD
 run-name: Frontend deployment  triggered by ${{ github.actor }}
 
 on:
