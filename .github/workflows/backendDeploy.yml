@@ -73,7 +73,6 @@ jobs:
 
       - name: Deploy the service on EKS
         run: |
-          cd ${{ matrix.services }}
           mvn clean package -Dmaven.test.skip=true
           docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/bc-pocketpay-backend-eks-${{ matrix.services }}:${{ github.run_number }} .
           docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/bc-pocketpay-backend-eks-${{ matrix.services }}:${{ github.run_number }}
