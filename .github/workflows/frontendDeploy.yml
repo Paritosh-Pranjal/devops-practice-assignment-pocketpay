@@ -59,3 +59,17 @@ jobs:
                 context: ./frontend
                 push: true
                 tags: ghcr.io/${{ secrets.GHCR_USERNAME }}/bc-pocketpay-frontend-eks:${{ github.run_number }}
+
+            - name: configure aws
+              uses: aws-actions/configure-aws-credentials@v2
+              with:
+                aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                aws-region:  ${{secrets.AWS_EKS_REGION}}
+                  
+            - name: update kubeconfig
+              run: aws eks update-kubeconfig --name ${{ secrets.CLUSTER_NAME }} --region ${{secrets.AWS_EKS_REGION}}
+
+
+            - name: update the frontend image
+              run: kubectl set image deployment/frontend-deployment pocketpay-frontend=ghcr.io/${{ secrets.GHCR_USERNAME }}/bc-pocketpay-frontend-eks:${{ github.run_number }}

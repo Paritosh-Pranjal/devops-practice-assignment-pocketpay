@@ -9,8 +9,8 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    # - host: frontend.play-nooax-ai-with.me
-     - http:
+    - host: frontend.play-nooax-ai-with.me
+      http:
         paths:
           - path: /
             pathType: Prefix
