@@ -54,13 +54,6 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and Push the docker image to ghcr
-        uses: docker/build-push-action@v4
-        with:
-          context: backend/${{ matrix.services }}
-          push: true
-          tags: ghcr.io/${{ secrets.GHCR_USERNAME }}/bc-pocketpay-backend-eks-${{ matrix.services }}:${{ github.run_number }}
-
       - name: configure aws
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -76,4 +69,4 @@ jobs:
           mvn clean package -Dmaven.test.skip=true
           docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/bc-pocketpay-backend-eks-${{ matrix.services }}:${{ github.run_number }} .
           docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/bc-pocketpay-backend-eks-${{ matrix.services }}:${{ github.run_number }}
-          kubectl set image deployment/backend-${{ matrix.service }}-deployment pocketpay-backend-${{ matrix.service }}=ghcr.io/${{ secrets.GHCR_USERNAME }}/bc-pocketpay-backend-eks-${{ matrix.services }}:${{ github.run_number }}
+          kubectl set image deployment/backend-${{ matrix.services }}-deployment pocketpay-backend-${{ matrix.services }}=ghcr.io/${{ secrets.GHCR_USERNAME }}/bc-pocketpay-backend-eks-${{ matrix.services }}:${{ github.run_number }}
