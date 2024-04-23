@@ -1,4 +1,4 @@
-name: Backend deployment
+name: Backend CI/CD
 run-name: Backend deployment  triggered by ${{ github.actor }}
 
 on:
